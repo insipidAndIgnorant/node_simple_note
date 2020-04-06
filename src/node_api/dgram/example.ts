@@ -36,10 +36,9 @@ client.send([Buffer.from('some'), Buffer.from('date')], 41234, 'localhost', (err
     client.close();
 });
 // or bind romote socket
+// add in v12.0.0
 client.connect(41234, 'localhost', () => {
     client.send('some message', (err) => {
       client.close();
     });
 });
-
-socket.setMulticastLoopback

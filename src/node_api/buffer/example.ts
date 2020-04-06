@@ -237,7 +237,7 @@ console.log(copy);
 
 
 
-// buf.(encoding?: string, start?: number, end?: number): string
+// buf.toString(encoding?: string, start?: number, end?: number): string
 // ⚪ encoding <string> 使用的字符编码。默认值: 'utf8'。
 // ⚪ start <integer> 开始解码的字节偏移量。默认值: 0。
 // ⚪ end <integer> 结束解码的字节偏移量（不包含）。默认值: buf.length。

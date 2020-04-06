@@ -51,7 +51,19 @@ import { spawn, exec, execFile, fork } from 'child_process';
 `child_process.execFile() 函数类似于 child_process.exec()，但默认情况下不会衍生 shell。 相反，指定的可执行文件 file 会作为新进程直接地衍生
 由于没有衍生 shell，因此不支持 I/O 重定向和文件通配等行为`;
 `Promise 版会返回 { stdout，stderr，child } `;
-
+execFile('', ['-c'],  {
+    cwd: '',
+    env: {},
+    encoding: 'utf8',
+    timeout: 10,
+    maxBuffer: 1024,
+    killSignal: 'SIGTERM',
+    uid: 1,
+    gid: 1,
+    windowsHide: false,
+    windowsVerbatimArguments: true,
+    shell: true
+}, () => {});
 
 
 

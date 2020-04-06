@@ -1,6 +1,8 @@
 
 # 【 dgram.Socket 类 】
-继承自: [EventEmitter]()
+继承自: [EventEmitter]()  
+dgram(datagram)数据报
+
 ## dgram.Socket 事件;
 
 ### 'close' 事件
@@ -102,7 +104,7 @@
 ### socket.setBroadcast(flag: boolean): void
     设置或清除 SO_BROADCAST socket 选项。 当设置为 true, UDP 包可能会被发送到一个本地接口的广播地址。
 ### socket.setMulticastInterface(multicastInterface: string): void
-~~网络知识不足，看不懂机翻~~
+~~网络知识不足，也看不懂机翻...~~
 
     All references to scope in this section are referring to IPv6 Zone Indices, which are defined by RFC 4007. In string form, an IP with a scope index is written as 'IP%scope' where scope is an interface name or interface number.
 
@@ -138,4 +140,43 @@ socket.bind(1234, () => {
 ### socket.setMulticastLoopback(flag: boolean): void
     设置或清除 IP_MULTICAST_LOOP socket 选项。当设置为 true, 多播数据包也将在本地接口接收。
 
+### socket.setMulticastTTL(ttl: number): void;
+    设置 IP_MULTICAST_TTL 套接字选项。一般来说，TTL 表示"生存时间"。 这里特指一个 IP 数据包传输时允许的最大跳步数，尤其是对多播传输。当 IP 数据包每向前经过一个路由或网关时，TTL 值减 1，若经过某个路由时，TTL 值被减至 0，便不再继续向前传输。
+
+    ttl 参数可以是 0 到 255 之间。 在大多数系统上，默认值是 1。
+
+### socket.setRecvBufferSize(size: number)
+    设置 SO_RCVBUF socket 选项。 设置 socket 接收 buffer 的最大值，以字节为单位。
+
+### socket.setSendBufferSize(size: number)
+    设置 SO_SNDBUF socket 选项。 设置 socket 发送 buffer 的最大值，以字节为单位。
+
+### socket.setTTL(ttl: number)
+    设置 IP_TTL 套接字选项。一般为了进行网络情况嗅探或者多播而修改 TTL 值
+
+### socket.unref()
+    默认情况下，只要 socket 是打开的，绑定一个 socket 将导致它阻塞 Node.js 进程退出。 使用 socket.unref() 方法可以从保持 Node.js 进程活动的引用计数中排除 socket，从而允许进程退出，尽管这个 socket 仍然在侦听。
+
+
+## dgram模块函数
+
+### createSocket(options: SocketOptions, callback?: (msg: Buffer, rinfo: RemoteInfo) => void): Socket;
+    interface SocketOptions {
+        type: SocketType; // 'udp4' | 'udp6'
+        reuseAddr?: boolean; // 若设置为 true，则 socket.bind() 会重用地址，即使另一个进程已经在其上面绑定了一个套接字。
+
+        // default false
+        ipv6Only?: boolean; // 将 ipv6Only 设置为 true 将会禁用双栈支持，即绑定到地址 :: 不会使 0.0.0.0 绑定。
+        recvBufferSize?: number; // 设置 SO_RCVBUF 套接字值
+        sendBufferSize?: number; // 设置 SO_SNDBUF 套接字值。
+        lookup?: (hostname: string, options: dns.LookupOneOptions, callback: (err: NodeJS.ErrnoException | null, address: string, family: number) => void) => void; // 自定义的查询函数。默认值: dns.lookup()。
+    }
+
+    创建一个 dgram.Socket 对象。 一旦创建了套接字，调用 socket.bind() 会指示套接字开始监听数据报消息。如果 address 和 port 没传给  socket.bind()，那么这个方法会把这个套接字绑定到 "全部接口" 地址的一个随机端口
+
+
+
+
+### createSocket(type: 'udp4' | 'udp6', callback?: (msg: Buffer, rinfo: RemoteInfo) => void): Socket;
+    callback 为 'message' 事件添加一个监听器。其余类似createSocket(options)
 
