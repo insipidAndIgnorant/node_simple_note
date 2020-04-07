@@ -1,8 +1,10 @@
-const fs = require('fs');
+import fs from 'fs';
 
+/**
+ * fs.dir
+ */
 async function print(path: string) {
     const dir = await fs.promises.opendir(path);
-    console.log('dir')
     for await (const dirent of dir) {
       console.log(dirent.name);
     }
