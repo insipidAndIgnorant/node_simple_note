@@ -121,7 +121,7 @@ namespace PrototypeExtend {
         return new (<any>F)();
     }
 
-    // like Object.creat() only on param
+    // like Object.creat() only one param
 }
 
 

@@ -28,8 +28,6 @@ server.listen(8443);
 // openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 //   -keyout 密钥.pem -out 证书.pem
 
-serve
-
 
 
 
