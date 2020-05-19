@@ -283,6 +283,8 @@ console.log(os.uptime());
 
 
 ### 错误常量
+
+#### POSIX 错误常量
 | 常量 | 描述 |
 | :-- | :-- |
 | E2BIG | 表明参数列表比期望的要长。|
@@ -364,3 +366,87 @@ console.log(os.uptime());
 | ETXTBSY | 表明一个文本文件处于忙碌。 txt busy |
 | EWOULDBLOCK | 表明该操作被屏蔽。 would block |
 | EXDEV | 表明一个不合适的链接。|
+
+#### Windows 系统特有的错误常量
+| 常量 | 描述 |
+| :-- | :-- |
+| WSAEINTR | 表明中断的函数调用。 interrupted|
+| WSAEBADF |	表明一个无效的文件句柄。bad f|
+| WSAEACCES |	表明权限不够完成操作。 access|
+| WSAEFAULT |	表明无效的指针地址。fault|
+| WSAEINVAL |	表明无效的参数被传递。invail|
+| WSAEMFILE |	表明有太多打开的文件。many file|
+|WSAEWOULDBLOCK	| 表明资源暂时不可用。would block |
+| WSAEINPROGRESS |	表明操作当前正在进行中。in progress |
+| WSAEALREADY	| 表明操作已经在进行中。 already |
+| WSAENOTSOCK |	表明资源不是 socket。no scoket |
+| WSAEDESTADDRREQ |	表明需要目的地址。 destination address req |
+| WSAEMSGSIZE	| 表明消息太长。 message size|
+| WSAEPROTOTYPE |	表明 socket 协议类型错误。 protocol type|
+| WSAENOPROTOOPT |	表明错误的协议选项。no protocol|
+| WSAEPROTONOSUPPORT |	表明协议不被支持。protocol no support|
+| WSAESOCKTNOSUPPORT |	表明 socket 类型不被支持。socket no support |
+| WSAEOPNOTSUPP |	表明操作不被支持。operation  not support |
+| WSAEPFNOSUPPORT |	表明协议簇不被支持。 PF not support |
+| WSAEAFNOSUPPORT |	表明地址簇不被支持。AF not support |
+| WSAEADDRINUSE | 表明网络地址已经在使用。address in use |
+| WSAEADDRNOTAVAIL |	表明网络地址不可用。address not avail |
+| WSAENETDOWN	| 表明网络关闭。net down |
+| WSAENETUNREACH |	表明网络不可达。net unreach |
+| WSAENETRESET |	表明网络连接被重置。net reset |
+| WSAECONNABORTED	| 表明连接被终止 connect aborted|
+| WSAECONNRESET |	表明连接被同伴重置。connect reset|
+| WSAENOBUFS |	表明没有可用的缓存空间。no bufs |
+| WSAEISCONN |	表明 socket 已经连接。 is connected|
+| WSAENOTCONN	| 表明 socket 没有连接。not connected |
+| WSAESHUTDOWN |	表明数据在 socket 关闭之后，不能被发送。shut down |
+| WSAETOOMANYREFS	| 表明有太多的引用。too many refs|
+| WSAETIMEDOUT |	表明连接超时。 time out |
+| WSAECONNREFUSED |	表明连接被拒绝。connect refused |
+| WSAELOOP |	表明名字不能被翻译。|
+| WSAENAMETOOLONG	| 表明名字太长。name too long |
+| WSAEHOSTDOWN |	表明网络主机关闭。 host down |
+| WSAEHOSTUNREACH |	表明没有到网络主机的路由。host unreach |
+| WSAENOTEMPTY |	表明目录是非空的。 not empty |
+| WSAEPROCLIM	| 表明有太多的进程。process limit |
+| WSAEUSERS	| 表明已经超过用户指标。|
+| WSAEDQUOT | 表明已经超过磁盘指标。|
+| WSAESTALE	| 表明一个稳定的文件句柄引用。stable |
+| WSAEREMOTE |	表明项目是远程的。remote |
+| WSASYSNOTREADY |	表明网络子系统尚未准备好。sys not ready |
+| WSAVERNOTSUPPORTED |	表明 winsock.dll 版本在范围之外。version not support|
+| WSANOTINITIALISED |	表明成功的 WSAStartup 还没有被执行 |
+| WSAEDISCON |	表明一个优雅的关机正在进行。 dsiconnect |
+| WSAENOMORE |	表明没有更多的结果。 no more |
+| WSAECANCELLED	| 表明一个操作已经被取消。cancel|
+| WSAEINVALIDPROCTABLE |	表明过程调用表是无效的。|
+| WSAEINVALIDPROVIDER |	表明无效的服务提供者。|
+| WSAEPROVIDERFAILEDINIT |	表明服务提供者初始化失败。|
+| WSASYSCALLFAILURE |	表明系统调用失败。 sys call failure |
+| WSASERVICE_NOT_FOUND |	表明服务没有被找到。service not found |
+| WSATYPE_NOT_FOUND |	表明类类型没有被找到。type not found |
+| WSA_E_NO_MORE |	表明没有更多的结果。 not more |
+| WSA_E_CANCELLED	| 表明调用被取消。cancel |
+| WSAEREFUSED	| 表明数据库请求被拒绝。refused |
+
+### dlopen 常量
+如果在操作系统上可用，则以下常量在 `os.constants.dlopen` 中导出。
+| 常量 | 描述 |
+| :-- | :-- |
+| RTLD_LAZY | 执行延迟绑定。 Node.js 默认设置此标志。|
+| RTLD_NOW |	在 dlopen(3) 返回之前解析库中的所有未定义符号。|
+| RTLD_GLOBAL |	库定义的符号将可用于后续加载的库的符号解析。|
+| RTLD_LOCAL	| 与 RTLD_GLOBAL 相反。 如果未指定任何标志，则这是默认行为。|
+| RTLD_DEEPBIND	| 使一个独立的库使用自己的符号，而不是先前加载的库中的符号。|
+
+### 优先级常量
+以下进程调度常量由 `os.constants.priority` 导出。
+| 常量 | 描述 |
+| :-- | :-- |
+| PRIORITY_LOW	| 最低进程调度优先级。这与 Windows 上的 IDLE_PRIORITY_CLASS 相对应，在所有其他平台上的值为 19。|
+| PRIORITY_BELOW_NORMAL	| 进程调度优先级高于 PRIORITY_LOW 且低于 PRIORITY_NORMAL。这对应于 Windows 上的 PRIORITY_NORMAL，并且在所有其他平台上的值为 10。|
+| PRIORITY_NORMAL	| 默认的进程调度优先级。这对应于 Windows 上的 NORMAL_PRIORITY_CLASS，并且在所有其他平台上的值为 0。|
+| PRIORITY_ABOVE_NORMAL	| 进程调度优先级高于 PRIORITY_NORMAL 且低于 PRIORITY_HIGH。这对应于 Windows 上的 ABOVE_NORMAL_PRIORITY_CLASS，并且在所有其他平台上的值为 -7。|
+| PRIORITY_HIGH	| 进程调度优先级高于 PRIORITY_ABOVE_NORMAL 且低于 PRIORITY_ABOVE_NORMAL。这对应于 Windows 上的 HIGH_PRIORITY_CLASS，并且在所有其他平台上的值为 -14。|
+| PRIORITY_HIGHEST |	最高进程调度优先级。 这对应于 Windows 上的 REALTIME_PRIORITY_CLASS，在所有其他平台上的值为 -20。|
+
